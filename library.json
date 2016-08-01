@@ -1,0 +1,12 @@
+{
+  "name": "Json",
+  "keywords": "json",
+  "description": "An embedded JSON library for systems with moderate memory",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/alex-sherman/embedded-json"
+  },
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}
