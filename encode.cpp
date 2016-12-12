@@ -180,11 +180,13 @@ int printObject(Json::Object &value, Print *print)
   result += print->print('{');
   for(int i = 0; i < value.size(); i++) {
     KeyValuePair<Json::Value> kvp = value.get(i);
+    if(kvp.value.isInvalid())
+      continue;
+    if(i > 0)
+      result += print->print(',');
     result += printStringPtr(kvp.key, print);
     result += print->print(':');
     result += Json::print(kvp.value, *print);
-    if(i < value.size() - 1)
-      result += print->print(',');
   }
   result += print->print("}");
   return result;

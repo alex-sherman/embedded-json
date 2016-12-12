@@ -10,7 +10,7 @@
 #define JSON_STRING 4
 #define JSON_ARRAY 5
 #define JSON_OBJECT 6
-#define JSON_INVALID -1
+#define JSON_INVALID 255
 
 namespace Json {
 
@@ -22,6 +22,8 @@ namespace Json {
         Object() { };
         Object* clone();
         ~Object();
+    protected:
+        virtual Value default_init();
     private:
         Object(const Object&);
     };

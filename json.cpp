@@ -66,6 +66,9 @@ Object *Object::clone() {
     }
     return copy;
 }
+Json::Value Object::default_init() {
+    return Value::invalid();
+}
 
 Array *Array::clone() {
     Array *copy = new Array(*this);

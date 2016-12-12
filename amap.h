@@ -5,7 +5,7 @@
 template <class T>
 class AList {
 public:
-    int _size = 10;
+    int _size = 1;
     int count = 0;
     T *elements;
     AList(AList<T> &source) { 
@@ -19,9 +19,9 @@ public:
         count = source.count;
     }
     AList() {
-        _size = 10;
+        _size = 1;
         count = 0;
-        elements = (T*)malloc(sizeof(T) * 10);
+        elements = (T*)malloc(sizeof(T));
 #ifdef MALLOC_DEBUG
         Serial.print("Malloc: ");
         Serial.println(int(elements));
@@ -119,6 +119,7 @@ public:
         T* current = get(key);
         if(current == NULL) {
             struct KeyValuePair<T> to_add;
+            to_add.value = default_init();
             strncpy(to_add.key, key, 64);
             //Try to find an empty item
             for(auto &kvp : *this) {
@@ -132,6 +133,10 @@ public:
             current = &this->get(this->size() - 1).value;
         }
         return current;
+    }
+protected:
+    virtual T default_init() {
+        return T();
     }
 private:
     AMap(const AMap&);
