@@ -3,7 +3,7 @@
 using namespace Json;
 
 // Parse an object - create a new root, and populate.
-Value Json::parse(char *value)
+Value Json::parse(const char *value)
 {
     Value output;
     aJsonStringStream stream(value, NULL);

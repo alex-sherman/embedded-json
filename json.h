@@ -38,7 +38,7 @@ THE SOFTWARE.
 
 namespace Json {
 
-	Value parse(char*);
+	Value parse(const char*);
 	int dump(Json::Value value, char* out, size_t size);
 	int print(Value, Print&);
 	int println(Value v, Print& p);
@@ -121,7 +121,7 @@ namespace Json {
 	public:
 		/* Either of inbuf, outbuf can be NULL if you do not care about
 		 * particular I/O direction. */
-		aJsonStringStream(char *inbuf_, char *outbuf_ = NULL, size_t outbuf_len_ = 0)
+		aJsonStringStream(const char *inbuf_, char *outbuf_ = NULL, size_t outbuf_len_ = 0)
 			: aJsonStream(NULL), inbuf(inbuf_), outbuf(outbuf_), outbuf_len(outbuf_len_)
 		{
 			inbuf_len = inbuf ? strlen(inbuf) : 0;
@@ -133,7 +133,8 @@ namespace Json {
 		virtual int getch();
 		virtual size_t write(uint8_t ch);
 
-		char *inbuf, *outbuf;
+		const char *inbuf;
+		char *outbuf;
 		size_t inbuf_len, outbuf_len;
 	};
 }
