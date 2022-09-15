@@ -62,7 +62,7 @@ namespace Json {
 		int parseString(Value *);
 
 		int skip();
-		int flush();
+		void flush();
 
 		int parseValue(Value *, char** filter);
 

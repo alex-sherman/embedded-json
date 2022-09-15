@@ -104,6 +104,7 @@ private:
 int Json::measure(Value value) {
     JsonMeasurer m;
     Json::print(value, m);
+    return m.length();
 }
 
 bool

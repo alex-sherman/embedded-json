@@ -35,7 +35,11 @@ int Json::dump(Json::Value value, char* out, size_t size) {
 }
 
 
-int Json::println(Value v, Print &p) { print(v, p); p.print('\n'); }
+int Json::println(Value v, Print &p) { int result = 0;
+  result += print(v, p);
+  result += p.print('\n');
+  return result;
+}
 
 // Render a value to text.
 int Json::print(Value item, Print &print)
